@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时</title>
+    <meta name="keywords" content="关键词">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="描述">
+    <meta name="author" content="当下">
+    <style>
+        body{font-family: "Microsoft YaHei",serif;}
+        body,dl,dd,p,h1,h2,h3,h4,h5,h6{margin:0;}
+        ol,ul,li{margin:0;padding:0;list-style:none;}
+        img{border:none;}
+        * {
+            margin: 0;
+            padding: 0
+        }
+        body{
+            background-color: #ddd;
+        }
+        #wrap{
+            max-width: 640px;
+            height: 640px;
+            margin: 0 auto;
+            padding-top: 20px;
+            text-align: center;
+            background: url("img/1.jpg") no-repeat 0 0/cover;
+            font-size: 30px;
+        }
+        #wrap strong{
+            font-size: 40px;
+            color: red;
+        }
+        #wrap span{
+            color: red;
+            display: block;
+            font-weight: bold;
+            text-align: center;
+        }
+        #wrap .list1{
+            font-size: 60px;
+        }
+        #wrap .list2{
+            font-size: 50px;
+        }
+        #wrap .list3{
+            font-size: 40px;
+        }
+        #wrap .list4{
+            font-size: 30px;
+        }
+        p{
+            font-size: 50px;
+            line-height: 100px;
+            font-weight: bold;
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <section id="wrap">
+
+    </section>
+    <script>
+        let width = window.screen.width;
+        let fixW = 640;
+        let scale = width / fixW;
+        let meta = document.createElement('meta');
+        meta.setAttribute('name','viewport');
+        meta.setAttribute('content','width='+fixW+', user-scalable=no, initial-scale='+scale+', maximum-scale='+scale+', minimum-scale='+scale);
+        document.head.appendChild(meta);
+    </script>
+    <script>
+
+        (function(){
+            let oW =document.getElementById("wrap");
+
+            let x = new Date(2018,11,22);
+
+            function fn(){
+                let d_ = x - new Date();
+
+                let DD = Math.floor(d_/1000/60/60/24);
+                let HH = Math.floor( d_/1000/60/60%24 );
+                let MM = Math.floor(d_/1000/60%60);
+                let SS = Math.floor(d_/1000%60);
+
+                if( DD < 10 )DD = "0"+DD;
+                if( HH < 10 )HH = "0"+HH;
+                if( MM < 10 )MM = "0"+MM;
+                if( SS < 10 )SS = "0"+SS;
+
+                oW.innerHTML = `距离<strong>考研</strong>还有 <span class="list1">${DD}</span> 天 <span class="list2">${HH}</span> 小时 <span class="list3">${MM}</span> 分 <span class="list4">${SS}</span> 秒<p>加油</p>`;
+            }
+            fn();
+            setInterval( fn , 1000);
+
+        })();
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
